@@ -1,0 +1,91 @@
+CREATE TABLE music(
+	title TEXT,
+	release_year INTEGER,
+	runtime INTEGER,
+	PRIMARY KEY (title, release_year),
+	FOREIGN KEY (is_genre) REFERENCE genres(genre));
+
+CREATE TABLE recommend(
+	score INTEGER,
+	music_title TEXT, 
+	music_release_year INTEGER,
+	PRIMARY KEY (music_title, music_release_year)
+	FOREIGN KEY music_title REFERENCE music(title),
+	FOREIGN KEY music_release_year REFERENCE music(release_year));
+
+CREATE TABLE genres(
+	genre TEXT,
+	PRIMARY KEY (genre));
+
+CREATE TABLE mgenres(
+	music_genre TEXT,
+	music_title TEXT, 
+	music_release_year INTEGER,
+	PRIMARY KEY(music_genre, music_title, music_release_year)
+	FOREIGN KEY music_genre REFERENCE genres(genre)
+	FOREIGN KEY music_title REFERENCE music(title),
+	FOREIGN KEY music_release_year REFERENCE music(release_year));
+
+CREATE TABLE musicPerson(
+	pid INTEGER,
+	name TEXT,
+	birthYear INTEGER,
+	PRIMARY KEY (pid));
+
+CREATE TABLE singer(
+	singer_pid INTEGER,
+	PRIMARY KEY (singer_pid)
+	FOREIGN KEY singer_pid REFERENCE musicPerson(pid));
+
+CREATE TABLE crew(
+	crew_pid INTEGER,
+	PRIMARY KEY (crew_pid)
+	FOREIGN KEY crew_pid REFERENCE musicPerson(pid));
+
+CREATE TABLE singerOf(
+	person_id INTEGER,
+	music_title TEXT, 
+	music_release_year INTEGER,
+	PRIMARY KEY(person_id, music_title, music_release_year)
+	FOREIGN KEY person_id REFERENCE singer(pid)
+	FOREIGN KEY music_title REFERENCE music(title),	
+	FOREIGN KEY music_release_year REFERENCE music(release_year));
+
+	
+CREATE TABLE crewOf(
+	person_id INTEGER,
+	music_title TEXT, 
+	music_release_year INTEGER,
+	crew_job TEXT,
+	PRIMARY KEY(person_id, music_title, music_release_year, crew_job)
+	FOREIGN KEY person_id REFERENCE singer(pid)
+	FOREIGN KEY music_title REFERENCE music(title),
+	FOREIGN KEY music_release_year REFERENCE music(release_year)
+	FOREIGN KEY crew_job REFERENCE jobs(job));
+
+CREATE TABLE R2M(
+	a1 INTEGER);
+
+CREATE TABLE E2(
+	a1 TEXT,
+	a21 TEXT,
+	a22 TEXT,
+	E1_a12 TEXT,
+	music_title TEXT,
+	music_release_year INTEGER,
+	PRIMARY KEY(a21, E1_a12),
+	FOREIGN KEY E1_a12 REFERENCE E1(a11),
+		ON DELETE CASADE
+	FOREIGN KEY music_title REFERENCE music(title),
+	FOREIGN KEY music_release_year REFERENCE music(release_year));
+
+CREATE TABLE E1(
+	a12 TEXT,
+	a11 TEXT,
+	E1_R1J_jobs TEXT,
+	PRIMARY KEY(a11),
+	FOREIGN KEY E1_R1J_jobs REFERENCE jobs(job));
+
+CREATE TABLE jobs(
+	job TEXT,
+	PRIMARY KEY(job));
