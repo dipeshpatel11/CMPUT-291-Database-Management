@@ -1,2 +1,0 @@
--- Question 1 dipesh1
-The Query gives output that have two columns, one listing years and the other listing the number of movies released in that year that had revenue NULL. The tuples are ordered in a descending order where year with most movies with NULL revenue is at top.
