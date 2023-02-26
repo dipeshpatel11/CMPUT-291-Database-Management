@@ -1,2 +1,0 @@
--- Question 2 dipesh1
-The query gives output of release year of all movies on Netflix that had revenue more than 50.
