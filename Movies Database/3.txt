@@ -1,0 +1,2 @@
+-- Question 3 dipesh1
+The query gives output of count of movies which are available on both Netflix and prime video and has voting more than average voting of all movies available in database.

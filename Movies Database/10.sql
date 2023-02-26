@@ -1,0 +1,2 @@
+-- Question 10 dipesh1
+SELECT ROUND((((SELECT COUNT(DISTINCT(I.Director)) FROM IMDBMovie I) - (SELECT COUNT(DISTINCT(I_with_l8.Director)) FROM IMDBMovie I_with_l8 WHERE Rating <= 8))*100.0/(SELECT COUNT(DISTINCT(D_Total.Director)) FROM IMDBMovie D_Total)),2);
