@@ -1,1 +1,4 @@
-# This is my CMPUT 291 Assignments.
+# README
+This are my CMPUT 291: Introduction to Files and Database Mangement Assignments.
+
+Skills Learned: SQLite, MongoDB
