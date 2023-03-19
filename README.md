@@ -1,1 +1,1 @@
-# This is my CMPUT 291 projects.
+# This is my CMPUT 291 Assignments.
